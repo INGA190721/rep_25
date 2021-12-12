@@ -1,0 +1,145 @@
+ДЗ№1
+
+1. Посмотреть где я /d
+pwd
+/d
+
+2. Создать папку /d
+mkdir  dz_terminal
+
+3. Зайти в папку /d
+cd dz_terminal
+
+4. Создать 3 папки /d/dz_terminal
+ mkdir dz_1 dz_2 dz_3
+
+5. Зайди в любую папку /d/dz_terminal
+ cd dz_3
+
+6. Создай 5 файлов ( 3txt, 2json) /d/dz_terminal/dz_3
+ touch t_1.txt t_2.txt t_3.txt j_1.json j_2.json
+
+7. Создать 3 папки /d/dz_terminal/dz_3
+mkdir d_1 d_2 d_3
+ 
+8. Вывести список содержимого папки /d/dz_terminal/dz_3
+ls -la
+total 4
+drwxr-xr-x 1 User 197121 0 Oct 31 13:17 ./
+drwxr-xr-x 1 User 197121 0 Oct 31 13:13 ../
+drwxr-xr-x 1 User 197121 0 Oct 31 13:17 d_1/
+drwxr-xr-x 1 User 197121 0 Oct 31 13:17 d_2/
+drwxr-xr-x 1 User 197121 0 Oct 31 13:17 d_3/
+-rw-r--r-- 1 User 197121 0 Oct 31 13:16 j_1.json
+-rw-r--r-- 1 User 197121 0 Oct 31 13:16 j_2.json
+-rw-r--r-- 1 User 197121 0 Oct 31 13:16 t_1.txt
+-rw-r--r-- 1 User 197121 0 Oct 31 13:16 t_2.txt
+-rw-r--r-- 1 User 197121 0 Oct 31 13:16 t_3.txt
+
+9. Открыть любой txt файл /d/dz_terminal/dz_3
+vim t_1.txt
+
+10. Написать туда любой текст 
+нажала "I" для перехода в режим "INSERT", написала текст
+
+11. Сохранить и выйти 
+Esc : wq enter
+
+12. Выйти из папки на уровень выше /d/dz_terminal/dz_3
+cd ..
+
+13. Переместить любые 2 файла которые вы создали
+ в любую другую папку  /d/dz_terminal
+
+ mv ./dz_3/{t_2.txt,t_3.txt} ./dz_1/
+
+14. Скопировать любые 2 файла, которые  вы создали, в любую
+другую папку /d/dz_terminal
+
+cp ./dz_1/{t_2.txt,t_3.txt} ./dz_2/
+
+15. Найти файл по имени /d/dz_terminal
+
+find . -name "*.txt"
+./dz_1/t_2.txt
+./dz_1/t_3.txt
+./dz_2/t_2.txt
+./dz_2/t_3.txt
+./dz_3/t_1.txt
+
+16. Посмотреть содержимое в реальном времени ( команда grep)
+изучить как работает)) /d/dz_terminal
+
+ tail -F ./dz_3/t_1.txt
+
+
+        Student Inga Vasilenko.
+        Teacher Vadim Ksendzov.
+        Training on the course "QA".
+        First homevork.`
+
+[4]+  Stopped                 tail -F ./dz_3/t_1.txt
+
+17. Вывести несколько первых строк из текстового файла /d/dz_terminal
+
+ head --lines=-2 ./dz_3/t_1.txt
+
+
+         Student Inga Vasilenko.
+        Teacher Vadim Ksendzov.
+
+18.Вывести несколько последних строк из текстового файла
+
+tail -n2 ./dz_3/t_1.txt
+        Training on the course "QA".
+        First homevork.`
+
+19. Посмотреть содержимое длинного файла (команда less)
+изучить как работает
+
+less ./dz_3/t_1.txt
+
+*в файле было только 4 строчки,ничего не показало
+после команды less,но после команды nl ,пронумеровало строки
+ nl ./dz_3/t_1.txt
+     1
+
+     2          Student Inga Vasilenko.
+     3          Teacher Vadim Ksendzov.
+     4          Training on the course "QA".
+     5          First homevork.`
+20. Вывести дату и время
+
+ date
+Sun Oct 31 22:45:05     2021
+
+Задание *
+1) Отправить http запрос на сервер.
+
+ curl "http://162.55.220.72:5005/object_info_3?name=Vadim&age=32&salary=1000"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:21 --:--:--     0
+curl: (28) Failed to connect to 162.55.220.72 port 5005 after 21000 ms: Timed out
+
+
+2) Написать скрипт который выполнит автоматически пункты
+3,4,5,6,7,8,13
+
+СКРИПТ
+
+#!/bin/bash
+
+cd dz_1
+
+mkdir papka_1 papka_2 papka_3
+
+cd papka_1
+
+touch f_1.txt f_2.txt f_3.txt 1.json 2.json
+
+mkdir p_1 p_2 p_3
+
+ls -la
+
+mv f_1.txt f_2.txt ../papka_2
